@@ -47,9 +47,9 @@ namespace SegundoParcialProgra
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            double PromedioFinal = GS.CalcPromFnl(Convert.ToDouble(txtProm1.Text), Convert.ToDouble(txtProm2.Text), Convert.ToDouble(txtProm3.Text) / 3);
+            double PromedioFinal = GS.CalcPromFnl(Convert.ToDouble(txtProm1.Text), Convert.ToDouble(txtProm2.Text), Convert.ToDouble(txtProm3.Text));
             GS.StudentReg(txtName.Text, txtLastName.Text, txtCarrer.Text, txtSignature.Text, Convert.ToDouble(txtProm1.Text), Convert.ToDouble(txtProm2.Text), Convert.ToDouble(txtProm3.Text), PromedioFinal);
-            dgvEstudiante.DataSource = GS.ViewStudents();
+            MostrarDGV();
             ClearRg();
         }
 
@@ -65,6 +65,9 @@ namespace SegundoParcialProgra
 
         public void MostrarDGV()
         {
+            GS.ViewStudents().Clear();
+            dgvEstudiante.Columns.Clear();
+            dgvEstudiante.DataSource = "";
             dgvEstudiante.DataSource = GS.ViewStudents();
         }
 
